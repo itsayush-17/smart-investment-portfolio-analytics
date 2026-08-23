@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Investment & Portfolio Analytics</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">India-Focused Wealth Intelligence</p>
+        <h1>Smart Investment & Portfolio Analytics</h1>
+        <p class="hero-text">
+          Analyze income, expenses, risk tolerance, goals, market conditions, and portfolio mix in one
+          decision-support dashboard.
+        </p>
+        <div class="hero-badges">
+          <span>Asset Allocation Engine</span>
+          <span>Portfolio Health Score</span>
+          <span>Goal Simulation</span>
+        </div>
+      </div>
+      <div class="hero-side card glass">
+        <p class="mini-label">Platform Focus</p>
+        <h2>Personalized allocation suggestions, not blind stock tips.</h2>
+        <p class="muted">
+          This MVP explains tradeoffs, quantifies risk, and keeps emergency reserves and goal funding
+          ahead of performance-chasing.
+        </p>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="control-panel glass">
+        <div class="panel-head">
+          <p class="eyebrow">Live Planner</p>
+          <h2>Investor Inputs</h2>
+          <p class="muted">Adjust the profile and rerun the analytics engine instantly.</p>
+        </div>
+        <form id="planner-form">
+          <label>
+            Monthly Income
+            <input type="number" name="monthly_income" min="10000" step="1000" />
+          </label>
+          <label>
+            Age
+            <input type="number" name="age" min="18" max="70" step="1" />
+          </label>
+          <label>
+            Dependents
+            <input type="number" name="dependents" min="0" max="6" step="1" />
+          </label>
+          <label>
+            Monthly Rent
+            <input type="number" name="rent" min="0" step="500" />
+          </label>
+          <label>
+            Monthly Food
+            <input type="number" name="food" min="0" step="500" />
+          </label>
+          <label>
+            Transport
+            <input type="number" name="transportation" min="0" step="500" />
+          </label>
+          <label>
+            EMIs
+            <input type="number" name="emis" min="0" step="500" />
+          </label>
+          <label>
+            Emergency Fund
+            <input type="number" name="emergency_fund" min="0" step="1000" />
+          </label>
+          <label>
+            Existing Savings
+            <input type="number" name="existing_savings" min="0" step="1000" />
+          </label>
+          <label>
+            Horizon (Years)
+            <input type="number" name="investment_horizon_years" min="1" max="40" step="1" />
+          </label>
+          <label>
+            Loss Tolerance (%)
+            <input type="range" name="loss_tolerance" min="0" max="35" step="1" />
+            <span class="range-value" data-range-for="loss_tolerance"></span>
+          </label>
+          <label>
+            Volatility Comfort
+            <input type="range" name="volatility_comfort" min="1" max="10" step="1" />
+            <span class="range-value" data-range-for="volatility_comfort"></span>
+          </label>
+          <label>
+            Income Stability
+            <input type="range" name="income_stability" min="1" max="10" step="1" />
+            <span class="range-value" data-range-for="income_stability"></span>
+          </label>
+          <label>
+            Market Knowledge
+            <input type="range" name="market_knowledge" min="1" max="10" step="1" />
+            <span class="range-value" data-range-for="market_knowledge"></span>
+          </label>
+          <button type="submit" class="primary-button">Recalculate Plan</button>
+        </form>
+      </aside>
+
+      <section class="dashboard">
+        <section class="summary-grid" id="summary-grid"></section>
+
+        <section class="section-block glass">
+          <div class="section-head">
+            <p class="eyebrow">Financial Profile</p>
+            <h2>Income, cash flow, and emergency readiness</h2>
+          </div>
+          <div class="two-column">
+            <div id="cash-flow-panel" class="card"></div>
+            <div id="emergency-panel" class="card"></div>
+          </div>
+        </section>
+
+        <section class="section-block glass">
+          <div class="section-head">
+            <p class="eyebrow">Investment Planner</p>
+            <h2>Risk profile and target asset mix</h2>
+          </div>
+          <div class="two-column">
+            <div id="risk-panel" class="card"></div>
+            <div id="allocation-panel" class="card"></div>
+          </div>
+        </section>
+
+        <section class="section-block glass">
+          <div class="section-head">
+            <p class="eyebrow">Market Dashboard</p>
+            <h2>Indian and global context behind the recommendation</h2>
+          </div>
+          <div class="two-column">
+            <div id="market-panel" class="card"></div>
+            <div id="sector-panel" class="card"></div>
+          </div>
+        </section>
+
+        <section class="section-block glass">
+          <div class="section-head">
+            <p class="eyebrow">Portfolio Analyzer</p>
+            <h2>Allocation, diversification, and concentration review</h2>
+          </div>
+          <div class="two-column">
+            <div id="portfolio-panel" class="card"></div>
+            <div id="portfolio-observations-panel" class="card"></div>
+          </div>
+        </section>
+
+        <section class="section-block glass">
+          <div class="section-head">
+            <p class="eyebrow">Goal Planner</p>
+            <h2>Funding rate and scenario projection</h2>
+          </div>
+          <div class="two-column">
+            <div id="goals-panel" class="card"></div>
+            <div id="simulation-panel" class="card"></div>
+          </div>
+        </section>
+
+        <section class="section-block glass">
+          <div class="section-head">
+            <p class="eyebrow">AI Financial Assistant</p>
+            <h2>Plain-language explanation</h2>
+          </div>
+          <div id="assistant-panel" class="card assistant-card"></div>
+        </section>
+      </section>
+    </main>
+
+    <template id="metric-template">
+      <div class="metric-card card">
+        <p class="mini-label metric-label"></p>
+        <h3 class="metric-value"></h3>
+        <p class="metric-note muted"></p>
+      </div>
+    </template>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
+
