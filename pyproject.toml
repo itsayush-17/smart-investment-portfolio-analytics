@@ -1,0 +1,28 @@
+[project]
+name = "smart-investment-portfolio-analytics"
+version = "0.1.0"
+description = "India-focused investment analytics platform for portfolio review, goal planning, and allocation guidance."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+  { name = "Ayush Kumar" }
+]
+dependencies = [
+  "numpy>=2.0",
+  "pandas>=2.2"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0"
+]
+
+[tool.pytest.ini_options]
+pythonpath = [
+  ".",
+  "backend"
+]
+testpaths = [
+  "backend"
+]
